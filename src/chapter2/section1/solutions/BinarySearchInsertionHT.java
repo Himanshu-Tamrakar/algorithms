@@ -13,10 +13,21 @@ public class BinarySearchInsertionHT {
 
     public static void sort(Comparable[] a) {
         for (int i = 1; i < a.length; i++) {
-            for (int j = i-1; j >= 0 ; j--) {
-                if (less(a[j+1], a[j])) exch(a, j+1, j);
-                else break;
+            int lo = 0;
+            int hi = i-1;
+
+            while(lo<=hi) {
+                int mid = lo + (hi-lo)/2;
+                if (a[mid].compareTo(a[i]) < 0) lo = mid+1;
+                else if (a[mid].compareTo(a[i]) > 0) hi = mid-1;
+                else lo = mid;
             }
+
+            Comparable temp = a[i];
+            for (int j = i; j > lo ; j--) {
+                a[j] = a[j-1];
+            }
+            a[lo] = temp;
         }
         assert isSorted(a);
         printArray(a);
