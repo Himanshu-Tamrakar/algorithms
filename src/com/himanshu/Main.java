@@ -14,11 +14,25 @@ import chapter1.sections4.solutions.LongestRowOfZero;
 import chapter2.section1.algo.InsertionHT;
 import chapter2.section1.algo.SelectionSortHT;
 import chapter2.section1.algo.ShellHT;
+import chapter2.section1.solutions.BinarySearchInsertionHT;
 import chapter2.section1.solutions.TransactionHT;
+import chapter2.section2.algo.MergeBUHT;
+import chapter2.section2.algo.MergeHT;
+import chapter2.section2.solutions.FasterMergeSolu10;
+import chapter2.section2.solutions.IndexMerge;
+import chapter2.section2.solutions.InversionSolution19;
+import chapter2.section2.solutions.Merge3Arrays;
+import chapter2.section3.algo.Quick3HT;
+import chapter2.section3.algo.QuickHT;
+import chapter2.section3.solutions.NutsAndBoltsSolution13;
+import chapter2.section3.solutions.Solution5;
+import edu.princeton.cs.algs4.StdRandom;
 
 public class Main {
 
     public static void main(String[] args) {
-        TransactionHT.main(new String[]{"src/chapter1/section5/data/tiny.txt"});
+
+        NutsAndBoltsSolution13.main(new String[]{"src/chapter1/section5/data/tiny.txt"});
+
     }
 }
