@@ -26,13 +26,15 @@ import chapter2.section3.algo.Quick3HT;
 import chapter2.section3.algo.QuickHT;
 import chapter2.section3.solutions.NutsAndBoltsSolution13;
 import chapter2.section3.solutions.Solution5;
+import chapter2.section4.algo.DWayMinPQHT;
+import chapter2.section4.algo.MinPQHT;
 import edu.princeton.cs.algs4.StdRandom;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        NutsAndBoltsSolution13.main(new String[]{"src/chapter1/section5/data/tiny.txt"});
+        DWayMinPQHT.main(new String[]{"src/chapter1/section5/data/tiny.txt"});
 
     }
 }
