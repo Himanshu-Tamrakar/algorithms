@@ -1,7 +1,7 @@
 package chapter3.section2.algo;
 
-import chapter3.section2.solutions.Solution6_HeightBST;
 import edu.princeton.cs.algs4.BST;
+import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdRandom;
 
@@ -46,6 +46,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         else return root;
     }
 
+
     public void put(Key key, Value value) {
         root = put(root, key, value);
     }
@@ -54,13 +55,16 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         int cmp = key.compareTo(root.key);
         if (cmp > 0) {
             root.right =  put(root.right, key, value);
-        } else {
+        } else if (cmp < 0) {
             root.left = put(root.left, key, value);
+        } else {
+            root.value = value;
         }
         root.N = size(root.left) + size(root.right) + 1;
         root.height = 1 + Math.max(height(root.left), height(root.right));
         return root;
     }
+
 
     public Key min() {
         Node minNode = min(this.root);
@@ -172,6 +176,53 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         root.height = height(root.left) + height(root.right) + 1;
         return root;
     }
+
+    private Node delete(Node root, Key key) {
+        if (root == null) return null;
+        int cmp = key.compareTo(root.key);
+        if (cmp < 0) {
+            root.left = delete(root.left, key);
+        } else if (cmp > 0) {
+            root.right = delete(root.right, key);
+        } else {
+            if (root.right == null) {
+                return root.left;
+            }
+            if (root.left == null) {
+                return root.right;
+            }
+            Node t = root;
+            root = min(root.right);
+            root.right = delMin(t.right);
+            root.left = t.left;
+        }
+        return root;
+    }
+
+    public Iterable<Key> keys() {
+        Queue<Key> list = new Queue<Key>();
+        keys(this.root, this.min(), this.max(), list);
+        return list;
+    }
+
+    private void keys(Node root, Key lo, Key hi, Queue<Key> list) {
+      if (root == null) return;
+      int cmpLo = lo.compareTo(root.key);
+      int cmpHi = hi.compareTo(root.key);
+
+      if (cmpLo <= 0) {
+          keys(root.left, lo, hi, list);
+      }
+
+      if (cmpLo <= 0 && cmpHi >= 0) {
+          list.enqueue(root.key);
+      }
+
+      if (cmpHi >= 0) {
+          keys(root.right, lo, hi, list);
+      }
+    }
+
 
     /*****************************************************************
      * Solutions
@@ -301,16 +352,19 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         System.out.printf("S E A R C H E X A M P L E");
         String test = "S E A R C H E X A M P L E";
         String[] keys = test.split( " ");
+//        StdRandom.shuffle(keys);
         int n = keys.length;
         BinarySearchTree<String, Integer> bst = new BinarySearchTree<>();
         for (int i = 0; i < n; i++)
             bst.put(keys[i], i);
 
-        bst.draw1(bst.root, test);
+//        bst.draw1(bst.root, test);
         System.out.printf("\nheight of tree is %d\n", bst.height(bst.root));
 
         System.out.printf("min %s\n", bst.min());
         System.out.printf("max %s\n", bst.max());
+        System.out.printf("get %s\n", bst.get("Z"));
+        System.out.printf("get %s\n", bst.get("E"));
         System.out.printf("floor of %s\n", bst.floor("A"));
         System.out.printf("floor of %s\n", bst.floor("F"));
         System.out.printf("floor of %s\n", bst.floor("Z"));
@@ -349,6 +403,8 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         System.out.printf("Key at rank %d of %s\n", 7, st.select(7));
         System.out.printf("Key at rank %d of %s\n", 0, st.select(0));
         System.out.printf("\nheight of tree is %d\n", st.height());
+        System.out.printf("get %s\n", st.get("Z"));
+        System.out.printf("get %s\n", st.get("E"));
 
 
     }
