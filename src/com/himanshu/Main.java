@@ -12,14 +12,34 @@ import chapter3.section4.algo.PhoneNumber;
 import chapter3.section4.algo.SequentialSearchST;
 import chapter3.section4.algo.Transaction;
 import chapter3.section4.solutions.*;
+import chapter3.section5.algo.DeDup;
+import chapter3.section5.algo.LookupCSV;
+import chapter3.section5.algo.SETHT;
+import chapter3.section5.solutions.Concordance;
+import chapter3.section5.solutions.HighlightingBrowserHyperlinks;
+import chapter3.section5.solutions.NonOverlappingIntervalSearch;
+import chapter3.section5.solutions.RegisterarScheduling;
 import edu.princeton.cs.algs4.BST;
 import sun.util.resources.cs.CurrencyNames_cs_CZ;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class Main {
 
     public static void main(String[] args) {
-        CuckooHashing.main(new String[]{"The quick brown fox jumps over the lazy dog"});
+        RegisterarScheduling.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+
+//        Date date1= null;
+//        try {
+//            date1 = new SimpleDateFormat("yyyy-MM-dd").parse("1993-12-26");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
     }
 }
