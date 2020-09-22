@@ -3,94 +3,115 @@ package chapter3.section5.solutions;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.TreeSet;
 
 enum instructors {
     Himanshu, Aman, Anshul, Anoop
 }
 
-public class RegisterarScheduling {
+enum classes {
+    Class1, Class2, Class3, Class4, Class5
+}
 
-    HashMap<String, ArrayList<TeachClass>> map;
+public class RegisterarScheduling {
+    private HashMap<String, TreeSet<TimeClass>> map;
+    private HashMap<String, TreeSet<TimeClass>> inverseMap;
+    private ArrayList<TeachClass> list;
+
     public RegisterarScheduling() {
-        map = new HashMap<>();
+        map = new HashMap<String, TreeSet<TimeClass>>();
+        inverseMap = new HashMap<String, TreeSet<TimeClass>>();
+        list = new ArrayList<>();
+    }
+
+    public boolean scheduleInstructor(String instructor, String classOf, String time){
+
+        if (instructor == null || classOf == null || time == null) {
+            throw new IllegalArgumentException("Instructor: " + instructor + ", classOf: " + classOf + ", time: " + time + " can not be null");
+        }
+
+        TreeSet instuctorList = map.get(instructor);
+        if (instuctorList != null && instuctorList.contains(new TimeClass(time))) {
+            System.out.printf("Instructor: %s is already assigned for given time: %s\n", instructor, time);
+            return false;
+        }
+
+        TreeSet classList = inverseMap.get(classOf);
+        if (classList != null && classList.contains(new TimeClass(time))) {
+            System.out.printf("Class: %s is already assigned for given time %s\n", classOf, time);
+            return false;
+        }
+
+        System.out.printf("instuctor %s is assigned to class %s at time: %s\n", instructor, classOf, time);
+        if (instuctorList == null) {
+            TreeSet<TimeClass> t = new TreeSet();
+            t.add(new TimeClass(time));
+            map.put(instructor, t);
+        } else {
+            instuctorList.add(new TimeClass(time));
+        }
+
+        if (classList == null) {
+            TreeSet<TimeClass> t = new TreeSet();
+            t.add(new TimeClass(time));
+            inverseMap.put(classOf, t);
+        }  else {
+            classList.add(new TimeClass(time));
+        }
+
+        list.add(new TeachClass(instructor, classOf, time));
+        return true;
+
+
+    }
+
+    private static class TimeClass implements Comparable<TimeClass> {
+        String time;
+
+        public TimeClass(String time) {
+            this.time = time;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+
+        @Override
+        public int compareTo(TimeClass that) {
+            return this.time.compareTo(that.time);
+        }
     }
 
     private static class TeachClass {
-        private String className;
-        private String at;
+        private String instructor;
+        private String classOf;
+        private String time;
 
-        private TeachClass(String className, String at) {
-            this.className = className;
-            this.at = at;
-        }
-
-        @Override
-        public String toString() {
-            return "TeachClass{" +
-                    "className='" + className + '\'' +
-                    ", at=" + at +
-                    '}';
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            TeachClass that = (TeachClass) o;
-            return  at.compareTo(that.at) == 0;
-        }
-
-        @Override
-        public int hashCode() {
-            throw new UnsupportedOperationException("hasCode() not implemented");
+        private TeachClass(String instructor, String classOf, String time) {
+            this.instructor = instructor;
+            this.classOf = classOf;
+            this.time = time;
         }
     }
 
-    public boolean scheduleInstructor(String instructor, TeachClass obj){
-        if (instructor == null) {
-            throw new IllegalArgumentException("instructor name can not be null");
-        }
-
-        if (obj == null) {
-            throw new IllegalArgumentException("TeachClass can not be null");
-        }
-
-        ArrayList<TeachClass> schedules = map.get(instructor);
-        if (schedules == null) {
-            ArrayList<TeachClass> list = new ArrayList<>();
-            list.add(obj);
-            map.put(instructor, list);
-            System.out.printf("Instructor: %s assigned to teach %s", instructor, obj);
-            return true;
-        }
-
-        for (TeachClass teachClass: schedules) {
-            if (teachClass.equals(obj)) {
-                System.out.printf("Instructor: %s already assign to teach %s", instructor, obj);
-                return false;
-            }
-        }
-
-        schedules.add(obj);
-        System.out.printf("Instructor: %s assigned to teach %s", instructor, obj);
-        return true;
-    }
 
 
     public static void main(String[] args) {
         RegisterarScheduling registerarScheduling = new RegisterarScheduling();
-        boolean b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Himanshu), new TeachClass("CLASS1", "09:30"));
-        System.out.printf("\t, return: %b\n", b);
+        boolean b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Himanshu), String.valueOf(classes.Class5), String.valueOf("09:00"));
+        System.out.printf("return: %b\n", b);
 
-        b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Aman), new TeachClass("CLASS1", "09:30"));
-        System.out.printf("\t, return: %b\n", b);
+        b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Aman), String.valueOf(classes.Class5), String.valueOf("10:00"));
+        System.out.printf("return: %b\n", b);
 
-        b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Aman), new TeachClass("CLASS1", "09:30"));
-        System.out.printf("\t, return: %b\n", b);
+        b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Himanshu), String.valueOf(classes.Class5), String.valueOf("10:00"));
+        System.out.printf("return: %b\n", b);
 
-        b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Anoop), new TeachClass("CLASS1", "09:30"));
-        System.out.printf("\t, return: %b\n", b);
-        b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Anoop), new TeachClass("CLASS1", "09:30"));
-        System.out.printf("\t, return: %b\n", b);
+        b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Himanshu), String.valueOf(classes.Class5), String.valueOf("12:00"));
+        System.out.printf("return: %b\n", b);
+
+        b = registerarScheduling.scheduleInstructor(String.valueOf(instructors.Anoop), String.valueOf(classes.Class5), String.valueOf("12:00"));
+        System.out.printf("return: %b\n", b);
     }
 }
