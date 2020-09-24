@@ -1,3 +1,42 @@
+/******************************************************************************
+ *  Compilation:  javac Interpreter.java
+ *  Execution:    java Interpreter
+ *  Dependencies: In.java ST.java
+ *
+ *  Parses simple arithmetic expressions of the form z = x and
+ *  z = x + y, where x and y can be symbolic variables or real
+ *  numbers. Uses a symbol table to store the mapping between
+ *  variable names and their values.
+ *
+ *
+ *  % java Interpreter
+ *  >> x := 34
+ *  x = 34.0
+ *
+ *  >> y := 23 * x
+ *  y := 782.0
+ *
+ *  >> z := x ^ y
+ *  z := Infinity
+ *
+ *  >> z := y ^ 2
+ *  z := 611524.0
+ *
+ *  >> x
+ *  x := 34.0
+ *
+ *  >> x := sqrt 2
+ *  x := 1.4142135623730951
+ *
+ *  Remarks
+ *  -------
+ *
+ *   - Currently allows values on the LHS, e.g., 17 = x + y,
+ *     and treats "17" as a variable name.
+ *
+ *
+ ******************************************************************************/
+
 package chapter3.section5.solutions;
 
 import java.util.HashMap;
