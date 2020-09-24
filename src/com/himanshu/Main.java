@@ -15,31 +15,23 @@ import chapter3.section4.solutions.*;
 import chapter3.section5.algo.DeDup;
 import chapter3.section5.algo.LookupCSV;
 import chapter3.section5.algo.SETHT;
-import chapter3.section5.solutions.Concordance;
-import chapter3.section5.solutions.HighlightingBrowserHyperlinks;
-import chapter3.section5.solutions.NonOverlappingIntervalSearch;
-import chapter3.section5.solutions.RegisterarScheduling;
+import chapter3.section5.solutions.*;
 import edu.princeton.cs.algs4.BST;
 import sun.util.resources.cs.CurrencyNames_cs_CZ;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
+import java.util.regex.Pattern;
 
 public class Main {
 
     public static void main(String[] args) {
-        RegisterarScheduling.main(new String[]{"src/chapter3/section5/data/tale.txt"});
-
-//        Date date1= null;
-//        try {
-//            date1 = new SimpleDateFormat("yyyy-MM-dd").parse("1993-12-26");
-//        } catch (ParseException e) {
-//            e.printStackTrace();
+//        String[] s = Pattern.compile("").split("x+y");
+//        for (int i = 0; i < s.length; i++) {
+//            System.out.printf("%s\n", s[i]);
 //        }
+        Interpreter.main(new String[]{"src/chapter3/section5/data/tale.txt"});
     }
 }
