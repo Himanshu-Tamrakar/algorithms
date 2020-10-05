@@ -1,5 +1,6 @@
 package com.himanshu;
 
+import chapter2.section2.solutions.InversionSolution19;
 import chapter2.section5.solutions.*;
 import chapter3.section1.solutions.PhoneNumberIndia;
 import chapter3.section2.algo.BinarySearchTree;
@@ -16,22 +17,23 @@ import chapter3.section5.algo.DeDup;
 import chapter3.section5.algo.LookupCSV;
 import chapter3.section5.algo.SETHT;
 import chapter3.section5.solutions.*;
-import edu.princeton.cs.algs4.BST;
-import sun.util.resources.cs.CurrencyNames_cs_CZ;
+import chapter4.section1.algo.BreadthFirstSearchHT;
+import chapter4.section1.algo.DFSPath;
+import edu.princeton.cs.algs4.Graph;
+import edu.princeton.cs.algs4.Merge;
+import edu.princeton.cs.algs4.SET;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class Main {
 
-    public static void main(String[] args) {
-//        String[] s = Pattern.compile("").split("x+y");
-//        for (int i = 0; i < s.length; i++) {
-//            System.out.printf("%s\n", s[i]);
-//        }
-        Interpreter.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+    public static void main(String[] args) throws FileNotFoundException {
+       BreadthFirstSearchHT.main(new String[]{"src/chapter3/section5/data/tale.txt"});
     }
+
+
+
 }
