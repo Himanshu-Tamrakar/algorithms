@@ -17,8 +17,8 @@ import chapter3.section5.algo.DeDup;
 import chapter3.section5.algo.LookupCSV;
 import chapter3.section5.algo.SETHT;
 import chapter3.section5.solutions.*;
-import chapter4.section1.algo.BreadthFirstSearchHT;
-import chapter4.section1.algo.DFSPath;
+import chapter4.section1.algo.*;
+import edu.princeton.cs.algs4.DegreesOfSeparation;
 import edu.princeton.cs.algs4.Graph;
 import edu.princeton.cs.algs4.Merge;
 import edu.princeton.cs.algs4.SET;
@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-       BreadthFirstSearchHT.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+       DegreeOfSaparation.main(new String[]{"src/chapter3/section5/data/tale.txt"});
     }
 
 
