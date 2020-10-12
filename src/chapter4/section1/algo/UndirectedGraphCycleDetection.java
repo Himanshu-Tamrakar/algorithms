@@ -1,5 +1,6 @@
 package chapter4.section1.algo;
 
+import edu.princeton.cs.algs4.Cycle;
 import edu.princeton.cs.algs4.Graph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stack;

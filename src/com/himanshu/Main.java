@@ -1,39 +1,54 @@
 package com.himanshu;
 
-import chapter2.section2.solutions.InversionSolution19;
-import chapter2.section5.solutions.*;
-import chapter3.section1.solutions.PhoneNumberIndia;
-import chapter3.section2.algo.BinarySearchTree;
-import chapter3.section2.solutions.NonRecursiceBSTHT;
-import chapter3.section2.solutions.PreorderToBST;
-import chapter3.section3.algo.RedBlackBST;
-import chapter3.section3.solutions.MemoryOfBSTs;
-import chapter3.section4.algo.LinearProbingST;
-import chapter3.section4.algo.PhoneNumber;
-import chapter3.section4.algo.SequentialSearchST;
-import chapter3.section4.algo.Transaction;
-import chapter3.section4.solutions.*;
-import chapter3.section5.algo.DeDup;
-import chapter3.section5.algo.LookupCSV;
-import chapter3.section5.algo.SETHT;
-import chapter3.section5.solutions.*;
-import chapter4.section1.algo.*;
-import edu.princeton.cs.algs4.DegreesOfSeparation;
-import edu.princeton.cs.algs4.Graph;
-import edu.princeton.cs.algs4.Merge;
-import edu.princeton.cs.algs4.SET;
+import chapter4.section1.solutions.DeletionOrder;
+import chapter4.section1.solutions.DiameterOfUnderectedGraph;
+import chapter4.section1.solutions.TwoEdgeConnectivity;
+import edu.princeton.cs.algs4.BinarySearch;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.IndexMaxPQ;
+import org.omg.CORBA.INTERNAL;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class Main {
+    private static class Node implements Comparable<Node> {
+        int vertex;
+        int distance;
+        public Node(int vertex, int distance) {
+            this.vertex = vertex;
+            this.distance = distance;
+        }
 
-    public static void main(String[] args) throws FileNotFoundException {
-       DegreeOfSaparation.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || this.getClass() != o.getClass()) return false;
+            Node that = (Node) o;
+            return this.vertex == that.vertex;
+        }
+
+        @Override
+        public int compareTo(Node node) {
+            if (this.distance < node.distance) return -1;
+            else if (this.distance > node.distance) return 1;
+            else return 0;
+        }
     }
 
 
+    public static void main(String[] args) throws FileNotFoundException {
+        DiameterOfUnderectedGraph.main(new String[]{"src/chapter3/section5/data/tale.txt"});
 
+//        IndexMaxPQ<Integer> maxPQ = new IndexMaxPQ<>(6);
+//        maxPQ.insert(0, 0);
+//        maxPQ.insert(1, 1);
+//        maxPQ.insert(2, 1);
+//        maxPQ.insert(5, 1);
+//
+//        System.out.println(maxPQ.delMax());
+//
+//        maxPQ.increaseKey(0, 3);
+//        System.out.println(maxPQ.delMax());
+    }
 }
