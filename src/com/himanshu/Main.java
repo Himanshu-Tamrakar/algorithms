@@ -3,6 +3,13 @@ package com.himanshu;
 import chapter4.section1.solutions.DeletionOrder;
 import chapter4.section1.solutions.DiameterOfUnderectedGraph;
 import chapter4.section1.solutions.TwoEdgeConnectivity;
+import chapter4.section2.algo.DirectedCycle;
+import chapter4.section2.algo.SymbolDigraph;
+import chapter4.section2.algo.TopologicalOrder;
+import chapter4.section2.solutions.DirectedEulerianCycle;
+import chapter4.section2.solutions.HamiltonianPathInDAG;
+import chapter4.section2.solutions.QueueBasedTopologicalOrderORTopologicalX;
+import chapter4.section2.solutions.Solution17;
 import edu.princeton.cs.algs4.BinarySearch;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.IndexMaxPQ;
@@ -36,19 +43,7 @@ public class Main {
         }
     }
 
-
     public static void main(String[] args) throws FileNotFoundException {
-        DiameterOfUnderectedGraph.main(new String[]{"src/chapter3/section5/data/tale.txt"});
-
-//        IndexMaxPQ<Integer> maxPQ = new IndexMaxPQ<>(6);
-//        maxPQ.insert(0, 0);
-//        maxPQ.insert(1, 1);
-//        maxPQ.insert(2, 1);
-//        maxPQ.insert(5, 1);
-//
-//        System.out.println(maxPQ.delMax());
-//
-//        maxPQ.increaseKey(0, 3);
-//        System.out.println(maxPQ.delMax());
+        QueueBasedTopologicalOrderORTopologicalX.main(new String[]{"src/chapter3/section5/data/tale.txt"});
     }
 }
