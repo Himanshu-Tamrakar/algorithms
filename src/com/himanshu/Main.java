@@ -10,6 +10,12 @@ import chapter4.section2.solutions.DirectedEulerianCycle;
 import chapter4.section2.solutions.HamiltonianPathInDAG;
 import chapter4.section2.solutions.QueueBasedTopologicalOrderORTopologicalX;
 import chapter4.section2.solutions.Solution17;
+import chapter4.section3.algo.EagerPrimsMST;
+import chapter4.section3.algo.EdgeWeightedGraph;
+import chapter4.section3.solutions.MinimumWeightFeedbackEdgeSet;
+import chapter4.section3.solutions.Solution14;
+import chapter4.section3.solutions.Solution15;
+import chapter4.section3.solutions.UniqueMST;
 import edu.princeton.cs.algs4.BinarySearch;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.IndexMaxPQ;
@@ -44,6 +50,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        QueueBasedTopologicalOrderORTopologicalX.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+        MinimumWeightFeedbackEdgeSet.main(new String[]{"src/chapter3/section5/data/tale.txt"});
     }
 }
