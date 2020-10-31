@@ -16,10 +16,10 @@ import chapter4.section3.solutions.MinimumWeightFeedbackEdgeSet;
 import chapter4.section3.solutions.Solution14;
 import chapter4.section3.solutions.Solution15;
 import chapter4.section3.solutions.UniqueMST;
+import chapter4.section4.algo.*;
 import edu.princeton.cs.algs4.BinarySearch;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.IndexMaxPQ;
-import org.omg.CORBA.INTERNAL;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -50,6 +50,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        MinimumWeightFeedbackEdgeSet.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+        QueueBasedBellmanFord.main(new String[]{"src/chapter3/section5/data/tale.txt"});
     }
 }
