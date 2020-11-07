@@ -1,8 +1,5 @@
 package chapter3.section3.algo;
 
-import chapter3.section2.algo.BinarySearchTree;
-import com.sun.org.apache.regexp.internal.RE;
-import edu.princeton.cs.algs4.BST;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdRandom;

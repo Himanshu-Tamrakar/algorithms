@@ -1,28 +1,8 @@
 package com.himanshu;
 
-import chapter4.section1.solutions.DeletionOrder;
-import chapter4.section1.solutions.DiameterOfUnderectedGraph;
-import chapter4.section1.solutions.TwoEdgeConnectivity;
-import chapter4.section2.algo.DirectedCycle;
-import chapter4.section2.algo.SymbolDigraph;
-import chapter4.section2.algo.TopologicalOrder;
-import chapter4.section2.solutions.DirectedEulerianCycle;
-import chapter4.section2.solutions.HamiltonianPathInDAG;
-import chapter4.section2.solutions.QueueBasedTopologicalOrderORTopologicalX;
-import chapter4.section2.solutions.Solution17;
-import chapter4.section3.algo.EagerPrimsMST;
-import chapter4.section3.algo.EdgeWeightedGraph;
-import chapter4.section3.solutions.MinimumWeightFeedbackEdgeSet;
-import chapter4.section3.solutions.Solution14;
-import chapter4.section3.solutions.Solution15;
-import chapter4.section3.solutions.UniqueMST;
-import chapter4.section4.algo.*;
-import edu.princeton.cs.algs4.BinarySearch;
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.IndexMaxPQ;
+import chapter5.section1.algo.*;
 
 import java.io.FileNotFoundException;
-import java.util.*;
 
 public class Main {
     private static class Node implements Comparable<Node> {
@@ -50,6 +30,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        QueueBasedBellmanFord.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+
+        ThreeWayCharectorQuickSort.main(new String[]{"src/chapter3/section5/data/tale.txt"});
     }
 }

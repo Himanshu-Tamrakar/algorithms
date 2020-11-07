@@ -19,7 +19,7 @@ public class SkippableEdgeSP {
         return reverse;
     }
     public Iterable<DirectedEdge> skippablePath(EdgeWeightedDigraph G, int s, int t) {
-        // Dijkstra Shortest Path algoriths as there is no negetive edge
+        // Dijkstra Shortest Path algoriths as there is no negative edge
         DijkstraSP sShortestPaths = new DijkstraSP(G, s);
         DijkstraSP tShortestPaths = new DijkstraSP(reverse(G), t);
 
