@@ -1,6 +1,7 @@
 package com.himanshu;
 
 import chapter5.section1.algo.*;
+import chapter5.section1.solutions.FrequencyCountQuick3String;
 
 import java.io.FileNotFoundException;
 
@@ -31,6 +32,6 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        ThreeWayCharectorQuickSort.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+        FrequencyCountQuick3String.main(new String[]{"src/chapter3/section5/data/tale.txt"});
     }
 }
