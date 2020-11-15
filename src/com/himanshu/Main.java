@@ -2,6 +2,9 @@ package com.himanshu;
 
 import chapter5.section1.algo.*;
 import chapter5.section1.solutions.FrequencyCountQuick3String;
+import chapter5.section2.algo.TSTHT;
+import chapter5.section2.algo.TrieHT;
+import edu.princeton.cs.algs4.TrieST;
 
 import java.io.FileNotFoundException;
 
@@ -31,7 +34,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-
-        FrequencyCountQuick3String.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+        TSTHT.main(new String[]{"src/chapter3/section5/data/tale.txt"});
     }
 }
