@@ -38,6 +38,26 @@ public class TrieHT {
         return x;
     }
 
+    public void nonRecursivePut(String key, Integer value) {
+        Node x = root;
+        int d = 0;
+        while (d < key.length()) {
+            char ch = key.charAt(d);
+            if (x == null) {
+                x = new Node();
+            }
+            if (d == 0) {
+                root = x;
+            }
+            if (x.next[ch] == null) x.next[ch] = new Node();
+
+            x = x.next[ch];
+            d++;
+        }
+
+        x.value = value;
+    }
+
     public int get(String key) {
         Node x = get(root, key, 0);
         return x == null ? -1 : x.value == null ? -1 : x.value;
@@ -50,6 +70,17 @@ public class TrieHT {
         }
         int ch = key.charAt(d);
         return x.next[ch] == null ? null : get(x.next[ch], key, d+1);
+    }
+
+    public int nonRecursiveGet(String key) {
+        Node x = root;
+        int d = 0;
+        while (x != null && d < key.length()) {
+            char ch = key.charAt(d++);
+            x = x.next[ch];
+        }
+
+        return x == null ? -1 : x.value == null ? -1 : x.value;
     }
 
     public void delete(String key) {
@@ -180,21 +211,29 @@ public class TrieHT {
                 "shellsort",
                 "she"
         };
-        st.put("sea",0);
-        st.put("sells",1);
-        st.put("shells",2);
-        st.put("by",3);
-        st.put("shore",4);
-        st.put("the",5);
-//        st.put("shellsort",6);
-        st.put("she",7);
+        System.out.printf("Insertion: ----------------------Start\n");
+        for (int i = 0; i < arr.length; i++) {
+            st.nonRecursivePut(arr[i], i);
+        }
+        System.out.printf("Insertion:-----------------------End\n");
 
-        st.delete("by");
-//        st.delete("shells");
+        System.out.printf("Delete:-----------------------Start\n");
+        st.delete("shells");
+        st.delete("she");
+        System.out.printf("Delete:-----------------------End\n");
 
+
+        System.out.printf("Retrival: ------------------------Start\n");
         for (String s: arr) {
             System.out.printf("%d\n", st.get(s));
         }
+        System.out.printf("Retrival: ------------------------End\n");
+
+        System.out.printf("Retrival: ------------------------Start\n");
+        for (String s: arr) {
+            System.out.printf("%d\n", st.nonRecursiveGet(s));
+        }
+        System.out.printf("Retrival: ------------------------End\n");
 
         System.out.printf("Keys With Prefix-----------------------------------\n");
         for (String s: st.keysWithPrefix("shell")) {

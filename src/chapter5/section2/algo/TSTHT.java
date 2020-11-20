@@ -1,5 +1,6 @@
 package chapter5.section2.algo;
 
+import chapter3.section5.solutions.Interpreter;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.TST;
 
@@ -40,6 +41,26 @@ public class TSTHT {
         }
     }
 
+    public int nonRecursiveGet(String key) {
+        Node x = root;
+        int d = 0;
+        while (x != null && d < key.length()) {
+
+            char ch = key.charAt(d);
+            if (ch < x.ch) {
+                x = x.left;
+            } else if (ch > x.ch) {
+                x = x.right;
+            } else {
+                d++;
+                if (d == key.length()) break;
+                x = x.middle;
+            }
+        }
+
+        return x == null ? -1 : x.value == null ? -1 : x.value;
+    }
+
     public Integer optimizeGet(String key) {
         Node var0 = get(start[key.charAt(0)], key, 1);
         return var0 == null ? -1 : var0.value;
@@ -70,6 +91,38 @@ public class TSTHT {
             x.value = value;
         }
         return x;
+    }
+    public void nonRecursivePut(String key, Integer value) {
+        Node x = root;
+        int d = 0;
+        while (d < key.length()) {
+            char ch = key.charAt(d);
+            if (x == null) {
+                x = new Node();
+                x.ch = ch;
+            }
+
+            if (x.middle == null) {
+                x.middle = new Node();
+                x.ch = '\0';
+            } else {
+                if (ch == '\0') {
+                    x.ch = ch;
+                } else if (ch < x.ch) {
+                    x = x.left;
+                } else if (ch > x.ch) {
+                    x = x.right;
+                } else {
+                    x = x.middle;
+                    d++;
+                }
+            }
+
+            x = x.middle;
+
+
+        }
+        x.value = value;
     }
 
     public void delete(String key) {
@@ -172,7 +225,7 @@ public class TSTHT {
 
         System.out.printf("Retrieving Value------------------------------Start\n");
         for (String s: arr) {
-            System.out.printf("%s: %d\n", s, st.get(s));
+            System.out.printf("%s: %d\n", s, st.nonRecursiveGet(s));
         }
         System.out.printf("Retrieving Value------------------------------End\n");
 
