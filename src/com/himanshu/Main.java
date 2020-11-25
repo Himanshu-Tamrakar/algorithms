@@ -4,6 +4,10 @@ import chapter5.section1.algo.*;
 import chapter5.section1.solutions.FrequencyCountQuick3String;
 import chapter5.section2.algo.TSTHT;
 import chapter5.section2.algo.TrieHT;
+import chapter5.section3.algo.BoyerMooreHT;
+import chapter5.section3.algo.BruteforceSearch;
+import chapter5.section3.algo.Grep;
+import chapter5.section3.algo.KMPHT;
 import edu.princeton.cs.algs4.TrieST;
 
 import java.io.FileNotFoundException;
@@ -34,6 +38,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        TSTHT.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+        Grep.main(new String[]{"src/chapter3/section5/data/tale.txt"});
+
     }
 }
